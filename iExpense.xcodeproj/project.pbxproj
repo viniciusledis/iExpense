@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE426A852BC8BCE500C66F74 /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE426A842BC8BCE500C66F74 /* ExpenseView.swift */; };
 		CE97667C2B8032E9002FE0B4 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97667B2B8032E9002FE0B4 /* iExpenseApp.swift */; };
 		CE97667E2B8032E9002FE0B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE97667D2B8032E9002FE0B4 /* ContentView.swift */; };
 		CE9766802B8032EE002FE0B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE97667F2B8032EE002FE0B4 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE426A842BC8BCE500C66F74 /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
 		CE9766782B8032E9002FE0B4 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE97667B2B8032E9002FE0B4 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
 		CE97667D2B8032E9002FE0B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				CE97667B2B8032E9002FE0B4 /* iExpenseApp.swift */,
 				CE97667D2B8032E9002FE0B4 /* ContentView.swift */,
+				CE426A842BC8BCE500C66F74 /* ExpenseView.swift */,
 				CE9766892B8A7FE7002FE0B4 /* AddView.swift */,
 				CE97667F2B8032EE002FE0B4 /* Assets.xcassets */,
 				CE9766812B8032EE002FE0B4 /* Preview Content */,
@@ -143,6 +146,7 @@
 				CE97667E2B8032E9002FE0B4 /* ContentView.swift in Sources */,
 				CE97667C2B8032E9002FE0B4 /* iExpenseApp.swift in Sources */,
 				CE97668A2B8A7FE7002FE0B4 /* AddView.swift in Sources */,
+				CE426A852BC8BCE500C66F74 /* ExpenseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

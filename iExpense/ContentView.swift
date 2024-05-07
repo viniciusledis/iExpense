@@ -5,72 +5,52 @@
 //  Created by Vinicius Ledis on 16/02/2024.
 //
 
+import SwiftData
 import SwiftUI
 
-struct ExpenseItem: Identifiable, Codable {
-    var id = UUID()
-    let name: String
-    let type: String
-    let amount: Double
+@Model
+class Expense {
+    var name: String
+    var type: String
+    var amount: Double
+    let date = Date.now
+    
+    init(name: String, type: String, amount: Double) {
+        self.name = name
+        self.type = type
+        self.amount = amount
+    }
 }
 
-@Observable
-class Expenses {
-    var items = [ExpenseItem]() {
-        didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "Items")
-            }
-        }
-    }
-    init() {
-        if let savedItems = UserDefaults.standard.data(forKey: "Items") {
-            if let decodedItems = try? JSONDecoder().decode([ExpenseItem].self, from: savedItems) {
-                items = decodedItems
-                return
-            }
-        }
-        items = []
-    }
-}
 
 struct ContentView: View {
-    @State private var expenses = Expenses()
+    @Environment(\.modelContext) var modelContext
+    
+    @State private var filter: String = "All"
+    let filters = ["All", "Personal", "Business"]
     
     var body: some View {
         NavigationStack {
-            List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            
-                            Text(item.type)
-                        }
-                        
-                        Spacer()
-                        
-                        Text(item.amount, format: .currency(code: "BRL"))
-                    }
-                }
-                .onDelete(perform: removeItems)
-            }
+            ExpenseView(expenseFilter: filter)
             .navigationTitle("iExpense")
             .toolbar {
                     NavigationLink {
-                        AddView(expenses: expenses)
+                        AddView(expense: .init(name: "", type: "Personal", amount: 0))
                     } label: {
                         Image(systemName: "plus")
                     }
+                Menu("Filter", systemImage: "arrow.up.arrow.down") {
+                    Picker("Filter", selection: $filter) {
+                        ForEach(filters, id: \.self) { filter in
+                            Text(filter).tag(filter)
+                        }
+                    }
+                }
             }
         }
     }
-    func removeItems(at offsets: IndexSet) {
-        expenses.items.remove(atOffsets: offsets)
-    }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
